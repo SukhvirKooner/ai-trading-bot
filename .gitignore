@@ -33,4 +33,14 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # Finder (MacOS) folder config
 .DS_Store
 
+# Prisma generated
 /generated/prisma
+
+# VS Code
+.vscode/
+
+# Build output
+build/
+
+# OS files
+Thumbs.db
