@@ -7,6 +7,12 @@ import { MARKETS } from "./markets";
 import { CandlestickApi, MarketInfo } from "./lighter-sdk-ts/generated";
 
 export async function createPosition(account: Account, symbol: string, side: "LONG" | "SHORT", quantity: number) {
+    if (!MARKETS[symbol as keyof typeof MARKETS]) {
+        throw new Error(`Invalid market symbol: ${symbol}`);
+    }
+    if (quantity <= 0) {
+        throw new Error(`Quantity must be positive, got: ${quantity}`);
+    }
     const client = await SignerClient.create({
         url: BASE_URL,
         privateKey: account.apiKey,
